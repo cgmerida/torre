@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pruebas JavaScript</title>
+</head>
+<body>
+
+    <div id="demo"></div>
+
+    <script>
+        var miModuloRevelador = (function () {
+            var nombre = "Juan Ramos",
+            saludo = "Hola !";
+
+            // Función privada
+            function imprimirNombre() {
+                console.log("Nombre:" + nombre);
+            }
+
+            // Función pública
+            function asignarNombre(nuevoNombre) {
+                nombre = nuevoNombre;
+            }
+
+            // Revelar accesos públicos (opcionalmente con otros nombres)
+            return {
+                setName: asignarNombre,
+                greeting: saludo,
+                getName: imprimirNombre
+            };
+        })();
+
+        // miModuloRevelador.setName("Carlos");
+        document.getElementById("demo").innerHTML = miModuloRevelador.getName();
+    </script>
+</body>
+</html>

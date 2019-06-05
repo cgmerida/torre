@@ -1,0 +1,77 @@
+
+html, body{
+    height: 100vh;
+    margin: 0;
+}
+.main{
+    height: 100vh;
+    min-height: 600px;
+    background: transparent url('../../img/regencia-mobil.jpg') no-repeat center;
+    background-size: cover;
+    overflow: auto;
+}
+
+@media (min-width: 500px) {
+    .main{
+        background: transparent url('../../img/regencia.jpg') no-repeat center;
+        background-size: cover;
+        overflow: auto;
+    }
+}
+.box{
+    margin-top: 35px;
+    height:100%;
+    width:100%;
+    font-family:Helvetica;
+    color:#fff;
+    background:rgba(17,17,17,0.4);
+    padding:30px 0px;
+    overflow: hidden;
+}
+.box h1{
+    text-align:center;
+    margin:30px 0;
+    font-size:30px;
+}
+.box input{
+    display:block;
+    width:300px;
+    margin:20px auto;
+    padding:15px;
+    background:rgba(0,0,0,0.2);
+    color:#fff;
+    border:0;
+}
+.box input:focus,.box input:active,.box button:focus,.box button:active{
+    outline:none;
+}
+.box button{
+    background:#742ECC;
+    border:0;
+    color:#fff;
+    padding:10px;
+    font-size:20px;
+    width:330px;
+    margin:20px auto;
+    display:block;
+    cursor:pointer;
+}
+.box button:active{ background:#27ae60; }
+@media only screen and (max-width: 1100px) and (min-width: 992px){
+    .box button{ width: 100%; }
+}
+
+@media only screen and (max-width: 400px){
+    .box input{ max-width: 100% }
+    .box button{ max-width: 100%; }
+}
+.alert-danger{
+    color: white;
+    background-color: #F44336;
+    border-color: #F44336;
+}
+.alert-success{
+    color: white;
+    background-color: #27ae60;
+    border-color: #27ae60;
+}
