@@ -3,7 +3,8 @@ node_modules/
 someOtherfoler/
 backups/
 guatemala/
-actividades/fotos/
+actividades/fotos/*.jpg
+actividades/fotos/*.png
 
 
 
