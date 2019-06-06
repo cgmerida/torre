@@ -41,7 +41,7 @@ if (isset($_SESSION['userid'])) {
                         <input type="password" placeholder="Contraseña" id="password" name="password">
                         <button id="login">Login</button>
                         <br>
-                        <div class="mensaje" style="display:none;"> </div>
+                        <div class="mensaje"></div>
                     </form>
                 </div>
             </div>
@@ -57,28 +57,17 @@ if (isset($_SESSION['userid'])) {
                 evento.preventDefault();
                 var datos = $('form').serialize();
                 if (!$("#username").val() || !$("#password").val()) {
-                    $(".mensaje").show();
                     $(".mensaje").append(`
                     <div class="alert alert-danger" role="alert">
                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                         <strong>Error!</strong> Usuario o contraseña invalidos.
                     </div>`);
                 }
-                $.post("complementos/login.php", datos)
-                .done(function(data) {
+                $.post("complementos/login.php", datos, function(data) {
                     if (data == "exito") {
                         $(".mensaje").append("<div class='alert alert-success alert-dismissible fade show' role=alert>" +
                             "<strong>Genial!</strong> Ingresando al sistema!</div>");
-                        $(".mensaje").show();
                         window.location.href = 'direccionar.php';
-                    } else {
-                        $("#password").val('');
-                        $(".mensaje").show();
-                        $(".mensaje").append(`
-                        <div class="alert alert-danger" role="alert">
-                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                            <strong>¡Error!</strong> Usuario o contraseña invalidos.
-                        </div>`);
                     }
                 })
                 .fail(function(jqXHR, textStatus) {
