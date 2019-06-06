@@ -62,23 +62,30 @@ if (isset($_SESSION['userid'])) {
                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                         <strong>Error!</strong> Usuario o contraseña invalidos.
                     </div>`);
+                    return false;
                 }
                 $.post("complementos/login.php", datos, function(data) {
                     if (data == "exito") {
                         $(".mensaje").append("<div class='alert alert-success alert-dismissible fade show' role=alert>" +
                             "<strong>Genial!</strong> Ingresando al sistema!</div>");
                         window.location.href = 'direccionar.php';
-                    }
-                })
-                .fail(function(jqXHR, textStatus) {
-                    console.error("Fallo la petición: " + textStatus);
-                    console.error(jqXHR);
+                    } else if (data == "error") {
+                        $("#password").val('');
 
-                    $(".mensaje").append(`
-                    <div class="alert alert-danger" role="alert">
-                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                        <strong>¡Error!</strong> Usuario o contraseña invalidos.
-                    </div>`);
+                        $(".mensaje").append(`
+                        <div class="alert alert-danger" role="alert">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <strong>¡Error!</strong> Usuario o contraseña invalidos.
+                        </div>`);
+                    } else {
+                        $(".mensaje").append(`
+                        <div class="alert alert-danger" role="alert">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <strong>¡Error!</strong> Error del sistema.
+                        </div>`);
+
+                        console.log(data);
+                    }
                 });
             });
         });
